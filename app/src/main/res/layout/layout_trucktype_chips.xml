@@ -8,7 +8,7 @@
     app:cardBackgroundColor="@color/white"
     app:cardCornerRadius="2dp"
     app:cardElevation="2dp"
-    app:contentPadding="16dp">
+    app:contentPadding="10dp">
 
 
     <android.support.constraint.ConstraintLayout
@@ -23,7 +23,7 @@
             android:layout_marginEnd="8dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
-            android:text="Select fleet types you are looking for"
+            android:text="Select Fleet Type"
             android:textSize="12sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -37,29 +37,88 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginBottom="16dp"
-            android:layout_marginEnd="24dp"
-            android:layout_marginStart="16dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
             android:layout_marginTop="16dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/chipstitle">
 
-            <android.support.design.chip.Chip
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:clickable="false"
-                app:chipText="LCV" />
-
-            <android.support.design.chip.Chip
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:chipText="Truck" />
             <com.robertlevonyan.views.chip.Chip
-                android:id="@+id/chip"
+                android:id="@+id/chiplcv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:mcv_chipText="Trailer" />
+                android:layout_margin="3dp"
+                android:elevation="2dp"
+                app:mcv_backgroundColor="@color/colorLightBg"
+                app:mcv_chipText="Lcv"
+                app:mcv_closeColor="@color/colorPrimary"
+                app:mcv_selectable="true"
+                app:mcv_selectedBackgroundColor="@color/colorPrimary"
+                app:mcv_selectedTextColor="@color/colorLightBg"
+                app:mcv_strokeColor="@color/colorPrimary"
+                app:mcv_textColor="@color/colorPrimary" />
+
+            <com.robertlevonyan.views.chip.Chip
+                android:id="@+id/chiptruck"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="3dp"
+                android:elevation="2dp"
+                app:mcv_backgroundColor="@color/colorLightBg"
+                app:mcv_chipText="Truck"
+                app:mcv_closeColor="@color/colorPrimary"
+                app:mcv_selectable="true"
+                app:mcv_selectedBackgroundColor="@color/colorPrimary"
+                app:mcv_selectedTextColor="@color/colorLightBg"
+                app:mcv_strokeColor="@color/colorPrimary"
+                app:mcv_textColor="@color/colorPrimary" />
+
+            <com.robertlevonyan.views.chip.Chip
+                android:id="@+id/chiptrailer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="3dp"
+                android:elevation="2dp"
+                app:mcv_backgroundColor="@color/colorLightBg"
+                app:mcv_chipText="Trailer"
+                app:mcv_closeColor="@color/colorPrimary"
+                app:mcv_selectable="true"
+                app:mcv_selectedBackgroundColor="@color/colorPrimary"
+                app:mcv_selectedTextColor="@color/colorLightBg"
+                app:mcv_strokeColor="@color/colorPrimary"
+                app:mcv_textColor="@color/colorPrimary" />
+
+            <com.robertlevonyan.views.chip.Chip
+                android:id="@+id/chiptusker"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="3dp"
+                android:elevation="2dp"
+                app:mcv_backgroundColor="@color/colorLightBg"
+                app:mcv_chipText="Tusker"
+                app:mcv_closeColor="@color/colorPrimary"
+                app:mcv_selectable="true"
+                app:mcv_selectedBackgroundColor="@color/colorPrimary"
+                app:mcv_selectedTextColor="@color/colorLightBg"
+                app:mcv_strokeColor="@color/colorPrimary"
+                app:mcv_textColor="@color/colorPrimary" />
+
+            <com.robertlevonyan.views.chip.Chip
+                android:id="@+id/chiptaurus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="3dp"
+                android:elevation="2dp"
+                app:mcv_backgroundColor="@color/colorLightBg"
+                app:mcv_chipText="Taurus"
+                app:mcv_closeColor="@color/colorPrimary"
+                app:mcv_selectable="true"
+                app:mcv_selectedBackgroundColor="@color/colorPrimary"
+                app:mcv_selectedTextColor="@color/colorLightBg"
+                app:mcv_strokeColor="@color/colorPrimary"
+                app:mcv_textColor="@color/colorPrimary" />
 
         </android.support.design.chip.ChipGroup>
     </android.support.constraint.ConstraintLayout>
