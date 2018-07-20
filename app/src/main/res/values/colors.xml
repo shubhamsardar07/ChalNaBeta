@@ -6,6 +6,11 @@
 
     <color name="colorLightBg">#e4e2e2</color>
 
+    <color name="text_enabled">#ffffff</color>
+    <color name="text_disabled">#d1cace</color>
+
+
+
 
     <color name="white">#ffffff</color>
     <color name="black">#FF000000</color>
