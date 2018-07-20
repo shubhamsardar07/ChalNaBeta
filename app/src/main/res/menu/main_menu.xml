@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/action_cut"
+        android:title="Help"
+        app:showAsAction="never"
+        android:icon="@drawable/ic_live_help_black_24dp"
+        />
+    <item
+        android:id="@+id/action_copy"
+        android:title="Loadboard"
+        app:showAsAction="always|withText"
+        android:icon="@drawable/ic_widgets_black_24dp"
+
+        />
+    <item
+        android:id="@+id/action_paste"
+        android:title="About"
+        app:showAsAction="never"
+        />
+</menu>
