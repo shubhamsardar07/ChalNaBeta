@@ -1,13 +1,24 @@
 package `in`.wizdelight.chalnabeta.Fragments
 
 import `in`.wizdelight.chalnabeta.R
+import android.app.Activity
 import android.content.Context
+import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.support.v4.app.Fragment
+import android.support.v4.content.ContextCompat
+import android.support.v4.view.ViewCompat
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.OvershootInterpolator
+import com.google.android.gms.common.GooglePlayServicesNotAvailableException
+import com.google.android.gms.common.GooglePlayServicesRepairableException
+import com.google.android.gms.location.places.AutocompleteFilter
+import com.google.android.gms.location.places.ui.PlaceAutocomplete
+import kotlinx.android.synthetic.main.layout_route_input.*
+import kotlinx.android.synthetic.main.layout_route_input.view.*
 
 
 // TODO: Rename parameter arguments, choose names that match
@@ -29,19 +40,96 @@ class DirectoryFragment : Fragment() {
     private var param1: String? = null
     private var param2: String? = null
     private var listener: OnFragmentInteractionListener? = null
+    var fabrotation = 0f
+    internal var PLACE_AUTOCOMPLETE_REQUEST_CODE_SOURCE = 1
+    internal var PLACE_AUTOCOMPLETE_REQUEST_CODE_DESTINATION = 2
+    lateinit var v: View
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
+
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_directory, container, false)
+        val v = inflater.inflate(R.layout.fragment_directory, container, false)
+        this.v = v
+        v.fabFlip.setOnClickListener {
+            flipthefab()
+        }
+        v.lin_source.setOnClickListener {
+            starttheplacesfragment(PLACE_AUTOCOMPLETE_REQUEST_CODE_SOURCE)
+        }
+
+        v.lin_des.setOnClickListener {
+            starttheplacesfragment(PLACE_AUTOCOMPLETE_REQUEST_CODE_DESTINATION)
+        }
+        return v
+    }
+
+
+    private fun flipthefab() {
+        fabrotation = if (fabrotation == 0f) {
+            180f
+        } else {
+            0f
+        }
+        val interpolator = OvershootInterpolator()
+        ViewCompat.animate(fabFlip)
+                .rotation(fabrotation)
+                .withLayer()
+                .setDuration(300)
+                .setInterpolator(interpolator)
+                .start()
+
+        //swap cities
+        val t1 = textViewSource.text.toString()
+        val t2 = textViewDestination.text.toString()
+
+        v.textViewSource.text = t2
+        v.textViewDestination.text = t1
+
+    }
+
+    private fun starttheplacesfragment(code: Int) {
+        try {
+            val typeFilter = AutocompleteFilter.Builder()
+                    .setTypeFilter(AutocompleteFilter.TYPE_FILTER_CITIES)
+                    .setCountry("IN")
+                    .build()
+            val intent = PlaceAutocomplete.IntentBuilder(PlaceAutocomplete.MODE_FULLSCREEN)
+                    .setFilter(typeFilter)
+                    .build(activity)
+            startActivityForResult(intent, code)
+        } catch (e: GooglePlayServicesRepairableException) {
+            // TODO: Handle the error.
+        } catch (e: GooglePlayServicesNotAvailableException) {
+            // TODO: Handle the error.
+        }
+
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (resultCode == Activity.RESULT_OK) {
+            val place = PlaceAutocomplete.getPlace(context, data)
+
+            when (requestCode) {
+
+                PLACE_AUTOCOMPLETE_REQUEST_CODE_SOURCE -> {
+                    textViewSource.text = ". ${place.name}"
+                    textViewSource.setTextColor(ContextCompat.getColor(context!!, R.color.blue_grey_900))
+
+                }
+                PLACE_AUTOCOMPLETE_REQUEST_CODE_DESTINATION -> {
+                    textViewDestination.text = ". ${place.name}"
+                    textViewDestination.setTextColor(ContextCompat.getColor(context!!, R.color.blue_grey_900))
+                }
+
+            }
+        }
     }
 
     // TODO: Rename method, update argument and hook method into UI event
