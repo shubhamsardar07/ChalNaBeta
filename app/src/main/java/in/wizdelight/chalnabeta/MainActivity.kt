@@ -1,5 +1,6 @@
 package `in`.wizdelight.chalnabeta
 
+import `in`.wizdelight.chalnabeta.Fragments.ChatsFragment
 import `in`.wizdelight.chalnabeta.Fragments.DirectoryFragment
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
@@ -18,7 +19,7 @@ import com.ogaclejapan.smarttablayout.SmartTabLayout
 
 
 
-class MainActivity : AppCompatActivity() ,DirectoryFragment.OnFragmentInteractionListener {
+class MainActivity : AppCompatActivity() ,DirectoryFragment.OnFragmentInteractionListener, ChatsFragment.OnFragmentInteractionListener {
 
 
     override fun onFragmentInteraction(uri: Uri) {
@@ -34,7 +35,7 @@ class MainActivity : AppCompatActivity() ,DirectoryFragment.OnFragmentInteractio
         val adapter = FragmentPagerItemAdapter(
                 supportFragmentManager, FragmentPagerItems.with(this)
                 .add(R.string.directory, DirectoryFragment::class.java)
-                .add(R.string.chats, DirectoryFragment::class.java)
+                .add(R.string.chats, ChatsFragment::class.java)
                 .add(R.string.you, DirectoryFragment::class.java)
                 .create())
 
