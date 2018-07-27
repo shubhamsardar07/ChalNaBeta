@@ -52,6 +52,7 @@
                 android:id="@+id/textView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:alpha="0.5"
                 android:text="From"
                 android:textSize="12sp"
                 android:textStyle="bold" />
@@ -102,6 +103,7 @@
                 android:id="@+id/textViewTo"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:alpha="0.5"
                 android:text="To"
                 android:textSize="12sp"
                 android:textStyle="bold" />
